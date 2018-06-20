@@ -21,12 +21,12 @@ def genericLookUp(email):
     
     data = {"email"         :  email,
             "legalEntity"   : "ADIUS",
-            "clientId"      : "293FC0ECC43A4F5804C07A4ABC2FC833",
+            "clientId"      : "1ffec5bb4e72a74b23844f7a9cd52b3d",
             "source"        : "90901",
             "countryOfSite" : "US",
             "version"       : "13.0"}
     
-    r = s.post("https://srs.adidas.com/scvRESTServices/account/genericLookUp", headers=headers, json=data)
+    r = s.post("https://apim.scv.3stripes.net/scvRESTServices/account/genericLookUp", headers=headers, json=data)
     if r.status_code != 200:
         print("Houston, we have a problem")
         print("Status Code: {}".format(r.status_code))
@@ -40,16 +40,17 @@ def createAccount(email, password):
     ''' 
     data = {"source"                  : "90901",
             "countryOfSite"           : "US",
+            #"countryOfSite"           : "GB",
             "actionType"              : "REGISTRATION",
             "password"                : password,
             "scope"                   : "pii mobile2web",
-            "clientId"                : "293FC0ECC43A4F5804C07A4ABC2FC833",
+            "clientId"                : "1ffec5bb4e72a74b23844f7a9cd52b3d",
             "email"                   : __email,
             "version"                 : "13.0",
             "minAgeConfirmation"      : "Y",
             "access_token_manager_id" : "jwt"}
     
-    r = s.post("https://srs.adidas.com/scvRESTServices/account/createAccount", headers=headers, json=data)
+    r = s.post("https://apim.scv.3stripes.net/scvRESTServices/account/createAccount", headers=headers, json=data)
     if r.status_code != 200:
         print("Houston, we have a problem")
         print("Status Code: {}".format(r.status_code))
